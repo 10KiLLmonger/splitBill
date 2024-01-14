@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <audio id="backgroundAudio" loop>
         <source src="backG.mp3" type="audio/mp3">
-        Your browser does not support the audio tag.
+        <!-- Your browser does not support the audio tag. -->
     </audio>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var audio = document.getElementById('backgroundAudio');
+
+            // Set volume to 1 (full volume)
+            audio.volume = 1;
+
             audio.play().catch(function (error) {
                 // Autoplay was prevented, handle the error
                 console.error("Autoplay was prevented:", error);
@@ -22,19 +28,31 @@
         });
     </script>
 
-
-    <div id="heading"><h2>split the bill with friends</h2></div>
+    <div id="heading">
+        <h2>split the bill with friends</h2>
+    </div>
     <div class="container">
         <h1 id="result">🎉🎊🥳</h1>
-        <h3>Enter the ammount to split with your friends</h3>
-        <input type="text" id="amount" placeholder="Enter the ammount">
+        <h3>Enter the amount to split with your friends</h3>
+        <input type="text" id="amount" placeholder="Enter the amount">
         <input type="text" id="persons" placeholder="Enter the no. of persons">
-        <button class="btn" onclick="split()">Split the bill</button>
+        <button class="btn"  id="playAudioButton" onclick="split()">Split the bill</button>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var audio = document.getElementById('backgroundAudio');
+            var playAudioButton = document.getElementById('playAudioButton');
 
-    
+            playAudioButton.addEventListener('click', function () {
+                audio.play().catch(function (error) {
+                    console.error("Autoplay was prevented:", error);
+                });
+            });
+        });
+    </script>
+
     <script src="script.js"></script>
-    
 
 </body>
+
 </html>
